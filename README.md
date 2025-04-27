@@ -27,15 +27,15 @@ A **production-ready Node.js + TypeScript + Express 5** backend template with be
 
 ## ⚙️ Available Scripts
 
-| Script               | Description                                |
-| :------------------- | :----------------------------------------- |
-| `npm run dev`        | Start in development mode (watch with tsx) |
-| `npm run build`      | Compile project to `dist/` folder          |
-| `npm run start`      | Run compiled project                       |
-| `npm run lint`       | Run ESLint to check code style             |
-| `npm run format`     | Format code with Prettier                  |
-| `npm run test`       | Run tests via Jest                         |
-| `npm run test:watch` | Watch and run tests automatically          |
+| Script             | Description                                |
+| :----------------- | :----------------------------------------- |
+| `npm run dev`      | Start in development mode (watch with tsx) |
+| `npm run build`    | Compile project to `dist/` folder          |
+| `npm run start`    | Run compiled project                       |
+| `npm run lint`     | Run ESLint to check code style             |
+| `npm run format`   | Format code with Prettier                  |
+| `npm run test`     | Run tests via Jest                         |
+| `npm run prepeare` | Activate hooks                             |
 
 ---
 
