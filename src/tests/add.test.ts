@@ -3,7 +3,7 @@ import { add } from './add';
 describe('add function test', () => {
   it('should return sum of a and b', () => {
     const a = 5;
-    const b = 3;
+    const b = 4;
 
     const answer = 9;
 
