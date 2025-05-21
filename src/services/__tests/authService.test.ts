@@ -2,7 +2,6 @@ import { userRepository } from '@/repository/userRepository';
 import { authService } from '../authService';
 import bcrypt from 'bcrypt';
 import jwt from 'jsonwebtoken';
-import { knex } from '@/db/knex';
 
 jest.mock('@/repository/userRepository', () => ({
   userRepository: {
@@ -12,8 +11,6 @@ jest.mock('@/repository/userRepository', () => ({
     findById: jest.fn(),
   },
 }));
-
-
 
 jest.mock('bcrypt');
 jest.mock('jsonwebtoken');
@@ -77,7 +74,9 @@ describe('authService', () => {
     it('should return tokens and user on success', async () => {
       (userRepository.findByEmail as jest.Mock).mockResolvedValue(mockUser);
       (bcrypt.compare as jest.Mock).mockResolvedValue(true);
-      (jwt.sign as jest.Mock).mockReturnValueOnce('access-token').mockReturnValueOnce('refresh-token');
+      (jwt.sign as jest.Mock)
+        .mockReturnValueOnce('access-token')
+        .mockReturnValueOnce('refresh-token');
 
       const result = await authService.login('test@example.com', 'secret');
 
@@ -99,9 +98,7 @@ describe('authService', () => {
         throw new Error('invalid');
       });
 
-      await expect(authService.refresh('bad-token')).rejects.toThrow(
-        'invalid',
-      );
+      await expect(authService.refresh('bad-token')).rejects.toThrow('invalid');
     });
 
     it('should throw if user not found or token mismatch', async () => {

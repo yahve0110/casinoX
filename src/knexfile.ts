@@ -1,7 +1,11 @@
 import dotenv from 'dotenv';
 import path from 'path';
 import { Knex } from 'knex';
+import { dirname } from 'path';
+import { fileURLToPath } from 'url';
 
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
 dotenv.config();
 
 const isCompiled = __dirname.includes('dist');

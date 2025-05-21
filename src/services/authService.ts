@@ -29,14 +29,12 @@ export const authService = {
     const accessToken = jwt.sign(
       { sub: user.id, email: user.email, role: user.role },
       JWT_SECRET,
-      { expiresIn: ACCESS_EXPIRES }
+      { expiresIn: ACCESS_EXPIRES },
     );
 
-    const refreshToken = jwt.sign(
-      { sub: user.id },
-      JWT_SECRET,
-      { expiresIn: REFRESH_EXPIRES }
-    );
+    const refreshToken = jwt.sign({ sub: user.id }, JWT_SECRET, {
+      expiresIn: REFRESH_EXPIRES,
+    });
 
     await userRepository.updateRefreshToken(user.id, refreshToken);
 
@@ -62,7 +60,7 @@ export const authService = {
     const newAccess = jwt.sign(
       { sub: user.id, email: user.email, role: user.role },
       JWT_SECRET,
-      { expiresIn: ACCESS_EXPIRES }
+      { expiresIn: ACCESS_EXPIRES },
     );
 
     const newRefresh = jwt.sign({ sub: user.id }, JWT_SECRET, {

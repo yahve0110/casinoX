@@ -36,7 +36,11 @@ export const authController = {
     }
   },
 
-  me: async (req: IGetUserAuthInfoRequest, res: Response, next: NextFunction) => {
+  me: async (
+    req: IGetUserAuthInfoRequest,
+    res: Response,
+    next: NextFunction,
+  ) => {
     try {
       res.status(200).json(req.user);
     } catch (err) {

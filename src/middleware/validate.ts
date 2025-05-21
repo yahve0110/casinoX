@@ -14,6 +14,6 @@ export const validate =
       return next(new ApiError(400, message));
     }
 
-    req.body = result.data; 
+    req.body = result.data;
     next();
   };

@@ -1,12 +1,17 @@
-import { Request, Response, NextFunction } from 'express';
+import { Response, NextFunction } from 'express';
 import jwt from 'jsonwebtoken';
 import { ApiError } from '@/errors/ApiError';
 import { JwtPayload } from '@/types/jwt';
 import { IGetUserAuthInfoRequest } from '@/types/definitionfile';
+import { logger } from '@/utils/logger';
 
 const JWT_SECRET = process.env.JWT_SECRET!;
 
-export const authMiddleware = (req: IGetUserAuthInfoRequest, res: Response, next: NextFunction) => {
+export const authMiddleware = (
+  req: IGetUserAuthInfoRequest,
+  res: Response,
+  next: NextFunction,
+) => {
   const authHeader = req.headers.authorization;
 
   if (!authHeader || !authHeader.startsWith('Bearer ')) {
@@ -20,6 +25,7 @@ export const authMiddleware = (req: IGetUserAuthInfoRequest, res: Response, next
     req.user = payload;
     next();
   } catch (err) {
+    logger.error(err);
     return next(new ApiError(403, 'Invalid or expired token'));
   }
 };

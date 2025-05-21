@@ -29,13 +29,20 @@ export default [
   {
     files: ['**/*.test.ts'],
     languageOptions: {
+      parser: parserTs,
+      parserOptions: {
+        project: null,
+      },
       globals: {
         describe: true,
         it: true,
         expect: true,
-      },
-      parserOptions: {
-        project: null,
+        test: true,
+        beforeEach: true,
+        afterEach: true,
+        jest: true,
+        process: true,
+        console: true,
       },
     },
   },

@@ -7,7 +7,7 @@
     "lint": "eslint 'src/**/*.{ts,js}' --max-warnings=0",
     "format": "prettier --write .",
     "prepare": "husky",
-"test": "dotenv -e .env -- node --experimental-vm-modules ./node_modules/.bin/jest",
+    "test": "dotenv -e .env -- node --experimental-vm-modules ./node_modules/.bin/jest",
     "test:watch": "NODE_OPTIONS=--experimental-vm-modules jest --watchAll"
   },
   "dependencies": {
