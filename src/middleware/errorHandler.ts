@@ -1,7 +1,13 @@
-import { Response } from 'express';
+import { Request, Response, NextFunction } from 'express';
 import { ApiError } from '@/errors/ApiError';
 
-export function errorHandler(err: any, res: Response) {
+export function errorHandler(
+  err: any,
+  req: Request,
+  res: Response,
+  next: NextFunction,
+) {
+  console.error('🔴 Global error:', err);
   let status = 500;
   let message = 'Internal Server Error';
 
